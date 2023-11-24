@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Receipt</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+   
+    body {
+      background-color: #fff;
+    }
+
+    .receipt-container {
+      background-color: #fff; 
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #thank-you-message {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    hr {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html">Home</a>
+    <a class="navbar-brand" href="categories.html">categories</a>
+    <a class="navbar-brand" href="cart.html">Cart</a>
+    <a class="navbar-brand" href="contact.html">contact</a>
+  </nav>
+
+  
+<div class="container">
+
+    <form action="">
+
+        <div class="row">
+
+            <div class="col">
+
+                <h3 class="title">billing address</h3>
+
+                <div class="inputBox">
+                    <span>full name :</span>
+                    <input type="text" placeholder="Full name">
+                </div>
+                <div class="inputBox">
+                    <span>email :</span>
+                    <input type="email" placeholder="abce@example.com">
+                </div>
+                <div class="inputBox">
+                    <span>address :</span>
+                    <input type="text" placeholder="room - street - locality">
+                </div>
+                <div class="inputBox">
+                    <span>city :</span>
+                    <input type="text" placeholder="city name">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>state :</span>
+                        <input type="text" placeholder="State name">
+                    </div>
+                    <div class="inputBox">
+                        <span>zip code :</span>
+                        <input type="text" placeholder="123456">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <h3 class="title">payment</h3>
+
+                <div class="inputBox">
+                    <span>cards accepted :</span>
+                    <img src="./card_img.png" alt="">
+                </div>
+                <div class="inputBox">
+                    <span>name on card :</span>
+                    <input type="text" placeholder="Name on card">
+                </div>
+                <div class="inputBox">
+                    <span>credit card number :</span>
+                    <input type="number" placeholder="1111-2222-3333-4444">
+                </div>
+                <div class="inputBox">
+                    <span>exp month :</span>
+                    <input type="text" placeholder="Month">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>exp year :</span>
+                        <input type="number" placeholder="20**">
+                    </div>
+                    <div class="inputBox">
+                        <span>CVV :</span>
+                        <input type="text" placeholder="1234">
+                    </div>
+                </div>
+
+            </div>
+    
+        </div>
+
+        <input type="submit" value="proceed to checkout" class="submit-btn">
+
+    </form>
+
+</div>    
+    
+</body>
+
+  <script>
+    // Function to fetch pricing details from book.json
+    async function fetchBookData() {
+      try {
+        const response = await fetch('book.json'); // Assuming 'book.json' is in the same directory
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error('Error fetching book data:', error);
+        return [];
+      }
+    }
+
+    // Function to display the payment receipt
+    async function displayPaymentReceipt() {
+      const receiptTable = document.getElementById('receipt-table');
+      receiptTable.innerHTML = '';
+
+      const totalAmount = document.getElementById('total-amount');
+      totalAmount.innerHTML = '';
+
+      // Retrieve cart items from local storage
+      const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+      // Fetch pricing details from book.json
+      const bookData = await fetchBookData();
+
+      let totalPrice = 0;
+
+      // Iterate through the cart items
+      cartItems.forEach((cartItem) => {
+        const book = bookData.find((item) => item.title === cartItem.title);
+        if (book) {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${book.title}</td>
+            <td>$${book.price.toFixed(2)}</td>
+          `;
+          receiptTable.appendChild(row);
+
+          totalPrice += book.price * cartItem.quantity;
+        }
+      });
+
+      totalAmount.innerHTML = `<p>Total Amount: $${totalPrice.toFixed(2)}</p>`;
+    }
+
+    // Call the function to display the payment receipt after the page is fully loaded
+    document.addEventListener('DOMContentLoaded', displayPaymentReceipt);
+  </script>
+</body>
+</html>

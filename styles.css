@@ -1,0 +1,184 @@
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #398469, #c5c5bf);
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgb(22, 101, 84), #8a7b7b);
+    text-align: center;
+    font-weight: bold;
+    font-family:cursive;
+    font-style:italic;
+  }
+  .navbar a {
+    color:#247977;
+    text-decoration: none;
+    margin: 0 19px;
+    font-size: 23px;
+  }
+  .navbar a:hover {
+    color:#398469;
+  }
+  
+  #title-overlay {
+    text-align: center;
+    background: linear-gradient(135deg, #dedede1a, rgb(88, 96, 124));
+    color: #fff;
+    padding: 20px;
+
+  }
+  #title-overlay h2 {
+    font-size: 40px;
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    font-weight: bold;
+    background: transparent;
+    font-style: italic;
+    text-shadow: 2px 2px 4px rgba(76, 99, 161, 0.5);
+  }
+  
+  .carousel {
+    margin-top: 20px;
+  }
+  .carousel .carousel-inner {
+    height: 600px;
+  }
+  .carousel .carousel-inner .carousel-item img {
+    -o-object-fit: contain;
+       object-fit: contain;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+    text-align: center;
+    background: #247977;
+    margin: 0px;
+    padding: 20px;
+    transition: transform 0.2s;
+  }
+  .card:hover {
+    transform: scale(1.05);
+  }
+  .card-title {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px 0;
+    font-style: italic;
+  }
+  .card-text {
+    font-size: 16px;
+    color: #dfb7b7;
+    background: transparent;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #55e6bf, rgb(45, 237, 244));
+    border: none;
+    border-radius: 5px;
+    color: #020202;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition:background 0.3s;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #46672a, rgb(55, 136, 159));
+  }
+  
+  .navbar .navbar-nav .nav-link {
+    color: #000000;
+  }
+  
+  .navbar .navbar-brand {
+    color: #0e0d0d;
+  }
+  
+  .navbar .navbar-nav .nav-item.active .nav-link {
+    background: linear-gradient(135deg, #f57f17, #a94614);
+    color:#247977;
+  }
+  
+  .bold-line {
+    border: none;
+    border-top: 3px solid #000;
+  }/*# sourceMappingURL=styles.css.map */
+
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid rgb(55, 136, 159);
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.col {
+    flex: 0 0 48%;
+}
+
+.title {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.inputBox {
+    margin-bottom: 15px;
+}
+
+.inputBox span {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='email'] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color:#247977;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
